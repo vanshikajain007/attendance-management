@@ -26,11 +26,3 @@ def authenticate(app):
         return wrapper
     return decorator
 
-
-#
-# @app.route('/my-post-endpoint', methods=['POST'])
-# @authenticate
-# def my_post_endpoint():
-#     # Access the token payload from the request context
-#     token_payload = app.current_request.context['token_payload']
-#     print(token_payload)
