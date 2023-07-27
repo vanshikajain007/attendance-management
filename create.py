@@ -3,6 +3,7 @@ from chalice import Chalice
 from authenticate import authenticate
 import psycopg2
 import logging
+
 app = Chalice(app_name='Attendance management system-chalice')
 
 
