@@ -1,17 +1,10 @@
 from db import get_db_connection
-from chalice import Chalice
-from authenticate import authenticate
 import psycopg2
 import logging
 
-app = Chalice(app_name='Attendance management system-chalice')
 
-
-@app.route('/create_table', methods=['POST'])
-# authenticate function is called to protect the api.
-@authenticate
 # this function creates table.
-def create_table():
+def create_table(app):
     conn = get_db_connection()
 
     cursor = conn.cursor()
@@ -99,18 +92,29 @@ def create_table():
         '''
 
         cursor.execute(create_table_query_students)
+        logging.info("Table 'users' created successfully.")
 
         conn.commit()
 
         return {'message': 'Table created successfully.'}
 
+
     except psycopg2.Error as e:
+
         error_message = str(e)
-        logging.error(str(e))
+
+        logging.error(error_message)
+
         # Handle the exception appropriately
+
         return {'error': error_message}
 
     # Close the database connection
     finally:
         cursor.close()
         conn.close()
+
+
+# create function is called here
+if __name__ == "__main__":
+    create_table()
