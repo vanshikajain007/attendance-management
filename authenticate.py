@@ -1,4 +1,4 @@
-from chalice import Chalice, UnauthorizedError
+from chalice import UnauthorizedError
 import jwt
 
 
