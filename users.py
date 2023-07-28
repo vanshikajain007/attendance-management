@@ -107,8 +107,6 @@ def put_users(users_app):
         conn.close()
         cursor.close()
 
-
-# @authenticate
 def post_users(users_app):
     # Connect to the database
     conn = get_db_connection()
@@ -142,9 +140,6 @@ def post_users(users_app):
         conn.close()
         cursor.close()
 
-
-# authenticate function is called to protect the api.
-# @authenticate
 # this function is used to get information from the table.
 def get_info_by_id(users_app):
     conn = get_db_connection()
