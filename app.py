@@ -2,7 +2,7 @@ import logging
 from chalice import Chalice
 import login
 from route.attendance_routes import attendance_app
-from authenticate import authenticate
+from apps.authenticate import authenticate
 from route.courses_routes import courses_app
 from route.departments_routes import departments_app
 from route.students_routes import students_app
