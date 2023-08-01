@@ -1,6 +1,6 @@
 from chalice import Blueprint
-import department
-from authenticate import authenticate
+from apps import department
+from apps.authenticate import authenticate
 
 departments_app = Blueprint(__name__)
 
