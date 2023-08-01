@@ -1,12 +1,12 @@
 import logging
 from chalice import Chalice
 import start
-from attendance_routes import attendance_app
+from route.attendance_routes import attendance_app
 from authenticate import authenticate
-from courses_routes import courses_app
-from departments_routes import departments_app
-from students_routes import students_app
-from users_routes import users_app
+from route.courses_routes import courses_app
+from route.departments_routes import departments_app
+from route.students_routes import students_app
+from route.users_routes import users_app
 
 app = Chalice(app_name='Attendance management system-chalice')
 
@@ -22,7 +22,7 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler(),  # Send logs to the console
-        logging.FileHandler('C:/Users/VANSHIKA JAIN/Attendance management system-chalice/Logs/file.log')  # Send logs to the log file
+        logging.FileHandler('/Logs/file.log')  # Send logs to the log file
     ]
 )
 
