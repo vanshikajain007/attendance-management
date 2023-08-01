@@ -1,5 +1,5 @@
 import unittest
-from department import patch_department, post_department, put_department, get_info_by_id
+from apps.department import patch_department, post_department, put_department, get_info_by_id
 
 
 class TestGetInfoById(unittest.TestCase):
