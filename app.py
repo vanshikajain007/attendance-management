@@ -1,3 +1,4 @@
+import logging
 from chalice import Chalice
 import start
 from route.attendance_routes import attendance_app
