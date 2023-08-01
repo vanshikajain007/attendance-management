@@ -36,10 +36,11 @@ def sign_up(app):
         cursor.execute(insert_query_users, values_users)
 
         conn.commit()
-        # logging.info('login successful')
+        logging.info('login successful')
         return "Sign up successful"
 
     except Exception as e:
+        logging.error('sign up failed')
         return "Sign up failed"
 
     finally:
@@ -113,7 +114,8 @@ def setup(app):
         if row is not None:  # Check if the row is not None
             full_name = row[2]
             if full_name == 'blake':
-                return 'user exists'
+                logging.info('user already exists')
+                return 'user already exists'
             else:
                 pass
         else:
@@ -126,6 +128,7 @@ def setup(app):
             cursor.execute(insert_query_first_user, values_first_user)
 
         conn.commit()
+        logging.info('first user')
         return 'first user'
     finally:
         conn.close()
