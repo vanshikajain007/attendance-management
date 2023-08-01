@@ -3,7 +3,6 @@ import uuid
 from db import get_db_connection
 
 
-# @authenticate
 # this function deletes row of a table.
 def patch_attendance_log(attendance_app):
     # Connect to the database
@@ -38,7 +37,6 @@ def patch_attendance_log(attendance_app):
         cursor.close()
 
 
-# @authenticate
 # this function deletes row of a table.
 def put_attendance_log(attendance_app):
     # Connect to the database
@@ -76,7 +74,6 @@ def put_attendance_log(attendance_app):
         cursor.close()
 
 
-# @authenticate
 # this function deletes row of a table.
 def post_attendance_log(attendance_app):
     # Connect to the database
@@ -111,8 +108,7 @@ def post_attendance_log(attendance_app):
         cursor.close()
 
 
-# authenticate function is called to protect the api.
-# @authenticate
+
 # this function is used to get information from the table.
 def get_info_by_id(attendance_app):
 

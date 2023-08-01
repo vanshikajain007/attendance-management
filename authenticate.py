@@ -7,7 +7,7 @@ secret_key_final = 'alaska'
 def authenticate(app):
     def decorator(func):
         def wrapper(*args, **kwargs):
-            # print(app.current_request.headers)
+            # print(main.current_request.headers)
             token = app.current_request.headers.get('Authorization')
             # print(token)
             if token:

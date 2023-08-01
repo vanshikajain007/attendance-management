@@ -1,15 +1,7 @@
-from chalice import Chalice, UnauthorizedError
-# from authenticate import authenticate
-from db import get_db_connection
+from main.db import get_db_connection
 import uuid
 
 
-# from app import app
-
-# app = Chalice(app_name='Attendance management system-chalice')
-
-
-# @authenticate
 # this function deletes row of a table.
 def delete_courses(courses_app):
     # Connect to the database
@@ -39,7 +31,6 @@ def delete_courses(courses_app):
         cursor.close()
 
 
-# @authenticate
 # this function deletes row of a table.
 def patch_courses(courses_app):
     # Connect to the database
@@ -76,7 +67,6 @@ def patch_courses(courses_app):
         cursor.close()
 
 
-# @authenticate
 # this function deletes row of a table.
 def put_courses(courses_app):
     # Connect to the database
@@ -118,7 +108,6 @@ def put_courses(courses_app):
         cursor.close()
 
 
-# @authenticate
 # this function deletes row of a table.
 def post_courses(courses_app):
     # Connect to the database
@@ -155,8 +144,6 @@ def post_courses(courses_app):
         cursor.close()
 
 
-# authenticate function is called to protect the api.
-# @authenticate
 # this function is used to get information from the table.
 def get_info_by_id(courses_app):
     conn = get_db_connection()

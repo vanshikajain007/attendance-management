@@ -1,8 +1,7 @@
-from db import get_db_connection
+from main.db import get_db_connection
 import uuid
 
 
-# @authenticate
 # this function deletes row of a table.
 def patch_department(departments_app):
     # Connect to the database
@@ -32,7 +31,7 @@ def patch_department(departments_app):
         cursor.close()
 
 
-# @authenticate
+
 # this function deletes row of a table.
 def put_department(departments_app):
     # Connect to the database
@@ -67,7 +66,6 @@ def put_department(departments_app):
         cursor.close()
 
 
-# @authenticate
 # this function deletes row of a table.
 def post_department(departments_app):
     # Connect to the database
@@ -99,8 +97,6 @@ def post_department(departments_app):
         cursor.close()
 
 
-# authenticate function is called to protect the api.
-# @authenticate
 # this function is used to get information from the table.
 def get_info_by_id(departments_app):
     conn = get_db_connection()

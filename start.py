@@ -1,6 +1,5 @@
 import logging
-
-from db import get_db_connection
+from main.db import get_db_connection
 import jwt
 import uuid
 
