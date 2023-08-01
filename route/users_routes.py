@@ -1,5 +1,5 @@
-import users
-from authenticate import authenticate
+from apps import users
+from apps.authenticate import authenticate
 from chalice import Blueprint
 
 users_app = Blueprint(__name__)
