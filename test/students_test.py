@@ -1,6 +1,5 @@
 import unittest
-from students import get_info_by_id, soft_delete_students, get_active_students, get_non_active_students, put_students, patch_students, post_students, present_students
-from db import get_db_connection
+from apps.students import get_info_by_id, soft_delete_students, put_students, patch_students, post_students
 
 
 class TestGetInfoById(unittest.TestCase):
