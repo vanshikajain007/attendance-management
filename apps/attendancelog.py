@@ -3,7 +3,7 @@ import uuid
 from db import get_db_connection
 
 
-# this function deletes row of a table.
+# this function patches data
 def patch_attendance_log(attendance_app):
     # Connect to the database
     conn = get_db_connection()
@@ -37,7 +37,7 @@ def patch_attendance_log(attendance_app):
         cursor.close()
 
 
-# this function deletes row of a table.
+# this function puts data
 def put_attendance_log(attendance_app):
     # Connect to the database
     conn = get_db_connection()
@@ -74,7 +74,7 @@ def put_attendance_log(attendance_app):
         cursor.close()
 
 
-# this function deletes row of a table.
+# this function posts data
 def post_attendance_log(attendance_app):
     # Connect to the database
     conn = get_db_connection()
@@ -106,7 +106,6 @@ def post_attendance_log(attendance_app):
     finally:
         conn.close()
         cursor.close()
-
 
 
 # this function is used to get information from the table.

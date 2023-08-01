@@ -1,5 +1,7 @@
 import psycopg2
 
+
+# database connection
 get_db_connection = lambda: psycopg2.connect(
     host=db_host,
     dbname=db_name,

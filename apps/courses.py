@@ -1,8 +1,8 @@
-from main.db import get_db_connection
+from db import get_db_connection
 import uuid
 
 
-# this function deletes row of a table.
+# this function deletes data
 def delete_courses(courses_app):
     # Connect to the database
     conn = get_db_connection()
@@ -31,7 +31,7 @@ def delete_courses(courses_app):
         cursor.close()
 
 
-# this function deletes row of a table.
+# this function patches data
 def patch_courses(courses_app):
     # Connect to the database
     conn = get_db_connection()
@@ -67,7 +67,7 @@ def patch_courses(courses_app):
         cursor.close()
 
 
-# this function deletes row of a table.
+# this function puts data
 def put_courses(courses_app):
     # Connect to the database
     conn = get_db_connection()
@@ -108,7 +108,7 @@ def put_courses(courses_app):
         cursor.close()
 
 
-# this function deletes row of a table.
+# this function posts data
 def post_courses(courses_app):
     # Connect to the database
     conn = get_db_connection()

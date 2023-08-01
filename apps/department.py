@@ -1,8 +1,8 @@
-from main.db import get_db_connection
+from db import get_db_connection
 import uuid
 
 
-# this function deletes row of a table.
+# this function deletes data
 def patch_department(departments_app):
     # Connect to the database
     conn = get_db_connection()
@@ -31,8 +31,7 @@ def patch_department(departments_app):
         cursor.close()
 
 
-
-# this function deletes row of a table.
+# this function puts data
 def put_department(departments_app):
     # Connect to the database
     conn = get_db_connection()
@@ -66,7 +65,7 @@ def put_department(departments_app):
         cursor.close()
 
 
-# this function deletes row of a table.
+# this function posts data
 def post_department(departments_app):
     # Connect to the database
     conn = get_db_connection()

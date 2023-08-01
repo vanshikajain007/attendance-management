@@ -1,4 +1,4 @@
-from main.db import get_db_connection
+from db import get_db_connection
 import psycopg2
 import logging
 
