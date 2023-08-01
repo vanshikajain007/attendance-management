@@ -1,5 +1,5 @@
-import students
-from authenticate import authenticate
+from apps import students
+from apps.authenticate import authenticate
 
 
 from chalice import Blueprint
