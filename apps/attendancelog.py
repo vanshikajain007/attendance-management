@@ -1,6 +1,6 @@
 import uuid
 
-from db import get_db_connection
+from database.db import get_db_connection
 
 
 # this function patches data

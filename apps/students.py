@@ -1,4 +1,4 @@
-from db import get_db_connection
+from database.db import get_db_connection
 import uuid
 import logging
 import psycopg2
