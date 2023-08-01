@@ -1,6 +1,6 @@
 import logging
 from chalice import Chalice
-import start
+import login
 from route.attendance_routes import attendance_app
 from authenticate import authenticate
 from route.courses_routes import courses_app
@@ -39,19 +39,19 @@ def get_app():
 @app.route('/first_user', methods=['POST'])
 @authenticate(app)
 def first_user():
-    var = start.setup(app)
+    var = login.setup(app)
     return var
 
 
 # route for login
 @app.route('/login', methods=['GET'])
 def get_login():
-    var = start.login(app)
+    var = login.login(app)
     return var
 
 
 # route for sign up
 @app.route('/sign_up', methods=['POST'])
 def sign_up():
-    var = start.sign_up(app)
+    var = login.sign_up(app)
     return var
