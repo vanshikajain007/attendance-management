@@ -1,6 +1,6 @@
 from chalice import Blueprint
-import attendancelog
-from authenticate import authenticate
+from apps import attendancelog
+from apps.authenticate import authenticate
 
 attendance_app = Blueprint(__name__)
 
