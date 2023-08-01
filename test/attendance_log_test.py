@@ -1,5 +1,5 @@
 import unittest
-from attendancelog import post_attendance_log, patch_attendance_log, put_attendance_log, get_info_by_id
+from apps.attendancelog import post_attendance_log, patch_attendance_log, put_attendance_log, get_info_by_id
 
 
 class TestGetInfoById(unittest.TestCase):
