@@ -17,18 +17,19 @@ app.register_blueprint(users_app, url_prefix='/users')
 app.register_blueprint(courses_app, url_prefix='/courses')
 app.register_blueprint(attendance_app, url_prefix='/attendance-log')
 app.register_blueprint(departments_app, url_prefix='/departments')
-# # logging.basicConfig(
-# #     level=logging.INFO,
-# #     format='%(asctime)s - %(levelname)s - %(message)s',
-# #     handlers=[
-# #         logging.StreamHandler(),  # Send logs to the console
-# #         logging.FileHandler('/Logs/file.log')  # Send logs to the log file
-# #     ]
-# # )
-#
-# # Get the root logger
-# logger = logging.getLogger()
-# logging.info("hello world")
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),  # Send logs to the console
+        logging.FileHandler('Logs/file.log')  # Send logs to the log file
+    ]
+)
+
+# Get the root logger
+logger = logging.getLogger()
+logging.info("chalice app ")
 
 
 def get_app():

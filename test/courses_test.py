@@ -1,6 +1,6 @@
 
 import unittest
-from courses import get_info_by_id, put_courses, post_courses, patch_courses
+from apps.courses import get_info_by_id, put_courses, post_courses, patch_courses
 
 
 class TestGetInfoById(unittest.TestCase):
