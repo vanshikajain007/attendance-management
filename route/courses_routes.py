@@ -1,6 +1,6 @@
 from chalice import Blueprint
-from authenticate import authenticate
-import courses
+from apps.authenticate import authenticate
+from apps import courses
 
 courses_app = Blueprint(__name__)
 
