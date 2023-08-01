@@ -1,5 +1,5 @@
 import unittest
-from users import post_users, put_users, patch_users, soft_delete_users, get_active_users, get_non_active_users, get_info_by_id
+from apps.users import post_users, put_users, patch_users, soft_delete_users, get_info_by_id
 
 
 class TestGetInfoById(unittest.TestCase):
