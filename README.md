@@ -16,10 +16,13 @@ You should see a new directory with the name [your-project-name] , navigate into
 ![image](https://github.com/vanshikajain007/attendance-management-system-chalice/assets/136046296/56872062-27b8-4d50-9053-44663987d978)
 
 4) Create a new python 3.7.5 virtual envoirnment by running
-   pipenv --python 3.7.5
+
+    pipenv --python 3.7.5
 5) Activate the virtual envoirnment by running
+   
    pipenv shell
 6) Now install chalice in the project
+
    pip install chalice
 
 
