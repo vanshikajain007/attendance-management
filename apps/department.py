@@ -1,8 +1,9 @@
 from database.db import get_db_connection
 import uuid
+import logging
 
 
-# this function deletes data
+# this function patches data
 def patch_department(departments_app):
     # Connect to the database
     conn = get_db_connection()
@@ -21,9 +22,11 @@ def patch_department(departments_app):
         cursor.execute(update_query_departments, (submitted_by_departments, id_departments))
         conn.commit()
 
+        logging.info('department updated')
         return {'message': ' updated successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
@@ -55,9 +58,12 @@ def put_department(departments_app):
         cursor.execute(update_query_departments, (submitted_by_departments, department_name, id_departments))
         conn.commit()
 
+        logging.info('department updated')
+
         return {'message': 'Updated successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
@@ -86,9 +92,11 @@ def post_department(departments_app):
         cursor.execute(insert_query_departments, values_students)
         conn.commit()
 
+        logging.info('department posted')
         return {'message': ' Posted successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
@@ -128,13 +136,14 @@ def get_info_by_id(departments_app):
                     # Convert other datetime fields as needed
                 }
             }
-
+            logging.info('department data')
             return processed_data
         else:
+            logging.info('department data not found')
             return {'message': 'department not found'}
 
     except Exception as e:
-
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
     finally:
         # Close the cursor and the database connection
