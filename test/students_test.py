@@ -57,11 +57,13 @@ class TestGetInfoById(unittest.TestCase):
 
 
 class MockApp:
+    # Mock App class
     def __init__(self, current_request):
         self.current_request = current_request
 
 
 class MockRequest:
+    # Mock request class
     def __init__(self, json_body):
         self.json_body = json_body
 
