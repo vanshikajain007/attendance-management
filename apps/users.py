@@ -1,10 +1,11 @@
 from database.db import get_db_connection
 import uuid
-
+import logging
 
 secret_key_final = 'alaska'
 
 
+# this function deletes users
 def soft_delete_users(users_app):
     # Connect to the database
     conn = get_db_connection()
@@ -21,9 +22,11 @@ def soft_delete_users(users_app):
         cursor.execute(update_query, (user_id,))
 
         conn.commit()
+        logging.info('user deleted')
         return {'message': "user has been deleted"}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
@@ -42,11 +45,6 @@ def patch_users(users_app):
     try:
         id_user = data.get('id_user')
         type_user = data.get('type_user')
-        full_name_user = data.get('full_name_user')
-        username = data.get('username')
-        email = data.get('email')
-        password_user = data.get('password_user')
-        submitted_by_user = data.get('submitted_by_user')
 
         update_query_user = """
                                                UPDATE users
@@ -55,15 +53,17 @@ def patch_users(users_app):
                                            """
         cursor.execute(update_query_user, (type_user, id_user))
         conn.commit()
-
+        logging.info('user updated')
         return {'message': ' patched successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
         conn.close()
         cursor.close()
+
 
 def put_users(users_app):
     # Connect to the database
@@ -91,12 +91,15 @@ def put_users(users_app):
                 submitted_by = %s
             WHERE id = %s
         """
-        cursor.execute(update_query_users, (type_user, full_name_user, username, email, password_user, submitted_by_user, id_user))
+        cursor.execute(update_query_users,
+                       (type_user, full_name_user, username, email, password_user, submitted_by_user, id_user))
         conn.commit()
+        logging.info('user updated')
 
         return {'message': 'Updated successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
@@ -128,9 +131,12 @@ def post_users(users_app):
         cursor.execute(insert_query_users, values_users)
         conn.commit()
 
+        logging.info('user updated')
+
         return {'message': ' Posted successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
@@ -177,15 +183,18 @@ def get_info_by_id(users_app):
                     # Convert other datetime fields as needed
                 }
             }
+            logging.info('user found')
 
             return processed_data
         else:
+            logging.info('user not found')
             return {'message': 'Users not found'}
 
     except Exception as e:
-
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
     finally:
+        logging.error("An error occurred: %s", str(e))
         # Close the cursor and the database connection
         cursor.close()
         conn.close()
@@ -214,9 +223,11 @@ def get_active_users():
                         'updated at': str(i[5])
                     }
                 })
+                logging.info('active user found')
 
         return User_list
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         print(f"Error occurred: {e}")
     finally:
         cursor.close()
@@ -246,12 +257,12 @@ def get_non_active_users():
                         'updated at': str(i[5])
                     }
                 })
+                logging.info('non-active user found')
 
         return User_list
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         print(f"Error occurred: {e}")
     finally:
         cursor.close()
         conn.close()
-
-
