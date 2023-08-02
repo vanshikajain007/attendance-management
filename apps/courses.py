@@ -1,34 +1,6 @@
 from database.db import get_db_connection
 import uuid
-
-
-# this function deletes data
-def delete_courses(courses_app):
-    # Connect to the database
-    conn = get_db_connection()
-
-    cursor = conn.cursor()
-
-    data = courses_app.current_request.json_body
-
-    try:
-        # Prepare the DELETE query
-        courses_id = data.get('log_id')
-        delete_query_courses = """
-                                               DELETE FROM courses
-                                               WHERE id = %s
-                                           """
-        cursor.execute(delete_query_courses, (courses_id,))
-        conn.commit()
-
-        return {'message': ' Deleted successfully'}
-
-    except Exception as e:
-        return {'error': str(e)}
-
-    finally:
-        conn.close()
-        cursor.close()
+import logging
 
 
 # this function patches data
@@ -42,12 +14,7 @@ def patch_courses(courses_app):
 
     try:
         id_courses = data.get('id_courses')
-        course_name = data.get('course_name')
-        department_id_course = data.get('department_id_course')
-        semester = data.get('semester')
-        class_courses = data.get('class_courses')
         lecture_hours = data.get('lecture_hours')
-        submitted_by_courses = data.get('submitted_by_courses')
 
         update_query_courses = """
                                                     UPDATE courses
@@ -56,13 +23,16 @@ def patch_courses(courses_app):
                                                 """
         cursor.execute(update_query_courses, (lecture_hours, id_courses))
         conn.commit()
+        logging.info('course updated')
 
         return {'message': 'Patched successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
+        # Close the cursor and the database connection
         conn.close()
         cursor.close()
 
@@ -98,12 +68,15 @@ def put_courses(courses_app):
         cursor.execute(update_query_courses, (course_name, department_id_course, semester, class_courses, lecture_hours, submitted_by_courses, id_courses))
 
         conn.commit()
+        logging.info('course updated')
         return {'message': ' Updated successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
+        # Close the cursor and the database connection
         conn.close()
         cursor.close()
 
@@ -133,13 +106,16 @@ def post_courses(courses_app):
 
         cursor.execute(insert_query_courses, values_courses)
         conn.commit()
+        logging.info('course updated')
 
         return {'message': ' Posted successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
+        # Close the cursor and the database connection
         conn.close()
         cursor.close()
 
@@ -179,13 +155,15 @@ def get_info_by_id(courses_app):
                     # Convert other datetime fields as needed
                 }
             }
+            logging.info('course data')
 
             return processed_data
         else:
+            logging.info('course not found')
             return {'message': 'course not found'}
 
     except Exception as e:
-
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
     finally:
         # Close the cursor and the database connection
