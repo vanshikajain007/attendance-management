@@ -63,9 +63,11 @@ def patch_students(students_app):
         cursor.execute(update_query_students, (full_name_students, id_students))
         conn.commit()
 
+        logging.info('updated successfully ')
         return {'message': ' updated successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
@@ -109,10 +111,11 @@ def put_students(students_app):
 
         cursor.execute(update_query_students, values_students)
         conn.commit()
-
+        logging.info('student updated')
         return {'message': 'Updated successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
@@ -144,9 +147,11 @@ def post_students(students_app):
         cursor.execute(insert_query_students, values_students)
         conn.commit()
 
+        logging.info('students posted')
         return {'message': ' Posted successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
