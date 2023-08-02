@@ -4,6 +4,7 @@ import jwt
 secret_key_final = 'alaska'
 
 
+# authenticate function
 def authenticate(app):
     def decorator(func):
         def wrapper(*args, **kwargs):
