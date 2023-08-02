@@ -36,8 +36,7 @@ def soft_delete_students(students_app):
         cursor.close()
 
 
-# @authenticate
-# this function deletes row of a table.
+# this function patches data
 def patch_students(students_app):
     # Connect to the database
     conn = get_db_connection()
@@ -49,10 +48,6 @@ def patch_students(students_app):
     try:
         id_students = data.get('id_students')
         full_name_students = data.get('full_name_students')
-        department_id_students = data.get('department_id_students')
-        class_students = data.get('class_students')
-        submitted_by_students = data.get('submitted_by_students')
-        token_students = data.get('token_students')
 
         update_query_students = """
                                         UPDATE students
@@ -75,8 +70,7 @@ def patch_students(students_app):
         cursor.close()
 
 
-# @authenticate
-# this function deletes row of a table.
+# this function puts the data
 def put_students(students_app):
     # Connect to the database
     conn = get_db_connection()
@@ -123,8 +117,7 @@ def put_students(students_app):
         cursor.close()
 
 
-# @authenticate
-# this function deletes row of a table.
+# this function posts data
 def post_students(students_app):
     # Connect to the database
     conn = get_db_connection()
@@ -159,6 +152,7 @@ def post_students(students_app):
         cursor.close()
 
 
+# this function gets students data
 def get_info_by_id(students_app):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -210,6 +204,7 @@ def get_info_by_id(students_app):
         conn.close()
 
 
+# this function gets active students data
 def get_active_students():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -236,12 +231,14 @@ def get_active_students():
 
         return student_list
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         print(f"Error occurred: {e}")
     finally:
         cursor.close()
         conn.close()
 
 
+# this function gets non-active data
 def get_non_active_students(students_app):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -266,12 +263,14 @@ def get_non_active_students(students_app):
 
         return student_list
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         print(f"Error occurred: {e}")
     finally:
         cursor.close()
         conn.close()
 
 
+# this function gets present student data
 def present_students(students_app):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -285,7 +284,3 @@ def present_students(students_app):
 
     student_present_data = cursor.fetchall()
     return student_present_data
-
-
-
-
