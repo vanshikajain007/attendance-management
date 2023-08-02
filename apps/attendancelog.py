@@ -1,3 +1,4 @@
+import logging
 import uuid
 
 from database.db import get_db_connection
@@ -14,10 +15,7 @@ def patch_attendance_log(attendance_app):
 
     try:
         id_log = data.get('id_log')
-        student_id_log = data.get('student_id_log')
-        course_id_log = data.get('course_id_log')
         present_log = data.get('present_log')
-        submitted_by_log = data.get('submitted_by_log')
 
         update_query_attendance_log = """
                                             UPDATE attendance_log
@@ -27,9 +25,11 @@ def patch_attendance_log(attendance_app):
         cursor.execute(update_query_attendance_log, (present_log, id_log))
         conn.commit()
 
+        logging.info('attendance log updated')
         return {'message': 'Updated successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
@@ -64,9 +64,11 @@ def put_attendance_log(attendance_app):
         cursor.execute(update_query_attendance_log,(present_log, student_id_log, course_id_log, submitted_by_log, id_log))
         conn.commit()
 
+        logging.info('attendance log updated')
         return {'message': ' Updated successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
@@ -97,10 +99,11 @@ def post_attendance_log(attendance_app):
 
         cursor.execute(insert_query_attendance, values_attendance)
         conn.commit()
-
-        return {'message': ' Updated successfully'}
+        logging.info('attendance log posted')
+        return {'message': ' Posted successfully'}
 
     except Exception as e:
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
 
     finally:
@@ -143,13 +146,13 @@ def get_info_by_id(attendance_app):
                     # Convert other datetime fields as needed
                 }
             }
-
+            logging.info('log data')
             return processed_data
         else:
             return {'message': 'Student not found'}
 
     except Exception as e:
-
+        logging.error("An error occurred: %s", str(e))
         return {'error': str(e)}
     finally:
         # Close the cursor and the database connection
