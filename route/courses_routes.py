@@ -6,6 +6,7 @@ courses_app = Blueprint(__name__)
 
 
 # routes for courses
+
 @courses_app.route('/get_info', methods=['GET'])
 @authenticate(courses_app)
 def get_courses_information():

@@ -6,6 +6,7 @@ users_app = Blueprint(__name__)
 
 
 # routes for users
+
 @users_app.route('/users/delete', methods=['DELETE'])
 @authenticate(users_app)
 def delete_users_information():

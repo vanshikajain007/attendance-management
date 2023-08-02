@@ -1,13 +1,12 @@
 from apps import students
 from apps.authenticate import authenticate
-
-
 from chalice import Blueprint
 
 students_app = Blueprint(__name__)
 
 
 # routes for students
+
 @students_app.route('/get_info_students', methods=['GET'])
 @authenticate(students_app)
 def get_students_information():

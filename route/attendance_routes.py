@@ -6,12 +6,6 @@ attendance_app = Blueprint(__name__)
 
 
 # Routes for attendance-log
-@attendance_app.route('/delete', methods=['DELETE'])
-@authenticate(attendance_app)
-def delete_attendance_log_information():
-    var = attendancelog.delete_attendance_log(attendance_app)
-    return var
-
 
 @attendance_app.route('/patch', methods=['PATCH'])
 @authenticate(attendance_app)

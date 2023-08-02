@@ -6,6 +6,8 @@ departments_app = Blueprint(__name__)
 
 
 # routes for departments
+
+
 @departments_app.route('/patch', methods=['PATCH'])
 @authenticate(departments_app)
 def patch_department_information():
