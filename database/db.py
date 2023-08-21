@@ -13,5 +13,5 @@ get_db_connection = lambda: psycopg2.connect(
 db_host = 'localhost'
 db_name = 'postgres'
 db_user = 'postgres'
-db_password = 'vanshika'
+db_password = ''
 db_port = '5432'
